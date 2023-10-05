@@ -19,7 +19,7 @@ export const StatusBar = ({colorMode, itemLeft, handleClearAllClick, handleAllCl
     }, [])
   return (
     <Box fontWeight={"700"} color={"grey"}>
-        {isMobileView ? (<Flex direction={"column"}>
+        {isMobileView ? <Flex direction={"column"}>
             <Flex h={"3em"} justifyContent={"space-between"} alignItems={"center"} p={"1.2em"} backgroundColor={colorMode === "light" ? "white" : "#1a202c"} borderBottomRadius={"10px"}>
             <Text>
                 {itemLeft} {itemLeft > 1 ? "items" : "item"} left 
@@ -41,27 +41,7 @@ export const StatusBar = ({colorMode, itemLeft, handleClearAllClick, handleAllCl
                 </Text>
                 </Flex>
             </Box>
-            </Flex>): (
-                <Flex p={"1.2em"} w={"100%"} justifyContent={"space-between"} backgroundColor={colorMode === "light" ? "white" : "#1a202c"} borderBottomRadius={"10px"}>
-                <Text>
-                    {itemLeft} {itemLeft > 1 ? "items" : "item"} left
-                </Text>
-                <Text onClick={handleClearAllClick} cursor={"pointer"} _hover={{color: colorMode === "light" ? "black" : "white"}}>
-                    Clear Completed
-                </Text>
-                <Flex gap={"1em"} justifyContent={"center"} alignItems={"center"} borderRadius={"10px"} backgroundColor={colorMode === "light" ? "white" : "#1a202c"}>
-                <Text onClick={handleAllClick} cursor={"pointer"} _hover={{color: colorMode === "light" ? "black" : "white"}}>
-                    All
-                </Text>
-                <Text onClick={handleActiveClick} cursor={"pointer"} _hover={{color: colorMode === "light" ? "black" : "white"}}>
-                    Active
-                </Text>
-                <Text onClick={handleCompletedClick} cursor={"pointer"} _hover={{color: colorMode === "light" ? "black" : "white"}}>
-                    Completed
-                </Text>
-                </Flex>
-            </Flex>
-            )}
+            </Flex>}
     </Box>
   )
 }

@@ -49,7 +49,7 @@ export const StatusBar = ({colorMode, itemLeft, handleClearAllClick, handleAllCl
                 <Text onClick={handleClearAllClick} cursor={"pointer"} _hover={{color: colorMode === "light" ? "black" : "white"}}>
                     Clear Completed
                 </Text>
-                <Flex gap={"1em"} justifyContent={"center"} alignItems={"center"} borderRadius={"10px"} backgroundColor={colorMode === "light" ? "white" : "#1a202c"}>
+                <Flex gap={"1em"} h={"3em"} justifyContent={"center"} alignItems={"center"} borderRadius={"10px"} backgroundColor={colorMode === "light" ? "white" : "#1a202c"}>
                 <Text onClick={handleAllClick} cursor={"pointer"} _hover={{color: colorMode === "light" ? "black" : "white"}}>
                     All
                 </Text>

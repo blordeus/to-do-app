@@ -101,11 +101,10 @@ function App() {
               colorMode={colorMode}
               handleCompletedTodo={handleCompletedTodo}
               handleDeleteTodo={handleDeleteTodo}
+              handleAllClick={handle}
             />
           </Box>
-          <StatusBar colorMode={colorMode} itemLeft={itemLeft} handleClearAllClick={handleClearAllClick}  handleAllClick={handleAllClick}
-              handleActiveClick={handleActiveClick}
-              handleCompletedClick={handleCompletedClick}/>
+          <StatusBar colorMode={colorMode} itemLeft={itemLeft} handleClearAllClick={handleClearAllClick}/>
           </Box>
      
         </Box>
