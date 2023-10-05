@@ -48,7 +48,7 @@ function App() {
         backgroundSize={"cover"}
         h={"40vh"}
       >
-        <Box w={{base: "80%", md: "60%", lg: "40%"}} m={"auto"} p="4em 0" >
+        <Box w="50%" p="4em 0" m="auto">
           <Header colorMode={colorMode} toggleColorMode={toggleColorMode} />
           <InputButton
             colorMode={colorMode}
@@ -65,13 +65,15 @@ function App() {
         position={"relative"}
       >
         <Box
-          minW={"100%"}
-          m={"auto"}
+          maxWw={"100%"}
           position={"absolute"}
           top={"-10"}
+          background={colorMode === "light" ? "white" : "#1a202c"}
         >
-          <Box w={{base: "80%", md: "60%", lg: "40%"}} m={"auto"}>
-          <Box maxH={"50vh"} overflowY={"auto"} borderTopRadius={"10px"} backgroundColor={colorMode === "light" ? "white" : "#1a202c"}>
+          <Box w={{base: "78%"}}>
+
+          </Box>
+          <Box maxH={"50vh"} overflowY={"auto"}>
             <TodoList
               todos={todos}
               colorMode={colorMode}
@@ -79,8 +81,6 @@ function App() {
               handleDeleteTodo={handleDeleteTodo}
             />
           </Box>
-          </Box>
-     
         </Box>
       </Box>
     </>

@@ -48,7 +48,7 @@ function App() {
         backgroundSize={"cover"}
         h={"40vh"}
       >
-        <Box w={{base: "80%", md: "60%", lg: "40%"}} m={"auto"} p="4em 0" >
+        <Box w="80%" p="4em 0" m="auto">
           <Header colorMode={colorMode} toggleColorMode={toggleColorMode} />
           <InputButton
             colorMode={colorMode}
