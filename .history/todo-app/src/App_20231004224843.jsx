@@ -42,7 +42,7 @@ function App() {
   }, []);
   
   useEffect(() => {
-    countUncompletedTodo().then((count) => setItemLeft(count));
+    countUncompletedTodo().then((data) => setItemLeft(data));
   }, []);
 
   return (

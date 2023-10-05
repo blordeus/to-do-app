@@ -41,7 +41,4 @@ export const deleteTodo = async (id) => {
     await axios.post("http://localhost:7000/data", {todos: updatedData});
 }
 
-export const countUncompletedTodo = async () => {
-    const { data } = await axios.get("http://localhost:7000/data");
-    return data.todos.filter((todo) => !todo.isCompleted).length;
-}
+export const countUncompletedTodo = async () =>

@@ -5,7 +5,7 @@ import lightBackgroundImage from "./images/bg-desktop-light.jpg";
 import darkBackgroundImage from "./images/bg-desktop-dark.jpg";
 import Header from "../components/Header";
 import { InputButton } from "../components/InputButton";
-import { addTodo, fetchTodos, markToDoCompleted, deleteTodo, countUncompletedTodo } from "./actions";
+import { addTodo, fetchTodos, markToDoCompleted, deleteTodo } from "./actions";
 import { TodoList } from "../components/TodoList";
 import { StatusBar } from "../components/StatusBar";
 
@@ -13,7 +13,6 @@ function App() {
   const { colorMode, toggleColorMode } = useColorMode();
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
-  const [itemLeft, setItemLeft] = useState(0);
 
   const handleAddTodo = async (e) => {
     if (todo && e.keyCode == 13) {
@@ -39,10 +38,6 @@ function App() {
 
   useEffect(() => {
     fetchTodos().then((data) => setTodos(data));
-  }, []);
-  
-  useEffect(() => {
-    countUncompletedTodo().then((count) => setItemLeft(count));
   }, []);
 
   return (
@@ -85,7 +80,7 @@ function App() {
               handleDeleteTodo={handleDeleteTodo}
             />
           </Box>
-          <StatusBar colorMode={colorMode} itemLeft={itemLeft}/>
+          <StatusBar/>
           </Box>
      
         </Box>

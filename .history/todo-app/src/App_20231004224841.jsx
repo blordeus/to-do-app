@@ -5,7 +5,7 @@ import lightBackgroundImage from "./images/bg-desktop-light.jpg";
 import darkBackgroundImage from "./images/bg-desktop-dark.jpg";
 import Header from "../components/Header";
 import { InputButton } from "../components/InputButton";
-import { addTodo, fetchTodos, markToDoCompleted, deleteTodo, countUncompletedTodo } from "./actions";
+import { addTodo, fetchTodos, markToDoCompleted, deleteTodo, count } from "./actions";
 import { TodoList } from "../components/TodoList";
 import { StatusBar } from "../components/StatusBar";
 
@@ -42,7 +42,7 @@ function App() {
   }, []);
   
   useEffect(() => {
-    countUncompletedTodo().then((count) => setItemLeft(count));
+    countUncompletedTodo().then((data) => setItemLeft(data));
   }, []);
 
   return (
