@@ -21,7 +21,7 @@ export const TodoItem = ({
   };
 
   useEffect(() => {
-    isTodoCompleted(todo.id).then((data) => setIsCompleted(data));
+    isTodoCompleted().then((data) => setIsCompleted(data));
   }, [todo.id]);
 
   return (

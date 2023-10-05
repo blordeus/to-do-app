@@ -5,7 +5,7 @@ import lightBackgroundImage from "./images/bg-desktop-light.jpg";
 import darkBackgroundImage from "./images/bg-desktop-dark.jpg";
 import Header from "../components/Header";
 import { InputButton } from "../components/InputButton";
-import { addTodo, fetchTodos, markToDoCompleted, deleteTodo, countUncompletedTodo, clearAllCompletedTodos } from "./actions";
+import { addTodo, fetchTodos, markToDoCompleted, deleteTodo, countUncompletedTodo } from "./actions";
 import { TodoList } from "../components/TodoList";
 import { StatusBar } from "../components/StatusBar";
 
@@ -37,11 +37,6 @@ function App() {
     await deleteTodo(id);
     setTodos(await fetchTodos());
   };
-
-  const handleClearAllClick = async () => {
-    await clearAllCompletedTodos();
-    fetchTodos().then((data) => setTodos(data));
-  }
 
   useEffect(() => {
     fetchTodos().then((data) => setTodos(data));
@@ -91,7 +86,7 @@ function App() {
               handleDeleteTodo={handleDeleteTodo}
             />
           </Box>
-          <StatusBar colorMode={colorMode} itemLeft={itemLeft} handleClearAllClick={handleClearAllClick}/>
+          <StatusBar colorMode={colorMode} itemLeft={itemLeft}/>
           </Box>
      
         </Box>

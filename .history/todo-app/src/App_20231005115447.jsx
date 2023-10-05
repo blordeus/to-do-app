@@ -91,7 +91,7 @@ function App() {
               handleDeleteTodo={handleDeleteTodo}
             />
           </Box>
-          <StatusBar colorMode={colorMode} itemLeft={itemLeft} handleClearAllClick={handleClearAllClick}/>
+          <StatusBar colorMode={colorMode} itemLeft={itemLeft} handleClearAllClick=/>
           </Box>
      
         </Box>

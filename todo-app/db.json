@@ -2,18 +2,13 @@
   "data": {
     "todos": [
       {
-        "id": "36255bdd-5117-453b-9ebc-84cfa31361c0",
-        "title": "as",
-        "isCompleted": true
+        "id": "fd849028-dc02-477b-ad14-92499f91058d",
+        "title": "fe",
+        "isCompleted": false
       },
       {
         "id": "ee62be2d-dca8-41d1-ab2f-6aa2b71ac72f",
         "title": "wewe",
-        "isCompleted": false
-      },
-      {
-        "id": "745c1e3a-b7c1-4990-b3fe-ded265091ded",
-        "title": "afafa",
         "isCompleted": false
       }
     ]

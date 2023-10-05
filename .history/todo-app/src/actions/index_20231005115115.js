@@ -46,9 +46,6 @@ export const countUncompletedTodo = async () => {
     return data.todos.filter((todo) => !todo.isCompleted).length;
 }
 
-export const clearAllCompletedTodos = async () => {
-    const { data } = await axios.get("http://localhost:7000/data");
-    const updatedData = data.todos.filter((todo) => !todo.isCompleted);
-    await axios.post("http://localhost:7000/data", {todos: updatedData});
-
+export const toggleColorMode = () => {
+    
 }

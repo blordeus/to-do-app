@@ -39,8 +39,8 @@ function App() {
   };
 
   const handleClearAllClick = async () => {
-    await clearAllCompletedTodos();
-    fetchTodos().then((data) => setTodos(data));
+    clearAllCompletedTodos();
+    setTodos(await fetchTodos());
   }
 
   useEffect(() => {
@@ -91,7 +91,7 @@ function App() {
               handleDeleteTodo={handleDeleteTodo}
             />
           </Box>
-          <StatusBar colorMode={colorMode} itemLeft={itemLeft} handleClearAllClick={handleClearAllClick}/>
+          <StatusBar colorMode={colorMode} itemLeft={itemLeft}/>
           </Box>
      
         </Box>

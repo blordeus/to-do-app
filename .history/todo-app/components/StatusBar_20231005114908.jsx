@@ -1,7 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react"
 
-export const StatusBar = ({colorMode, itemLeft, handleClearAllClick}) => {
+export const StatusBar = ({colorMode, itemLeft}) => {
     const [isMobileView, setIsMobileView] = useState(false);
 
     useEffect(() => {
@@ -24,9 +24,7 @@ export const StatusBar = ({colorMode, itemLeft, handleClearAllClick}) => {
             <Text>
                 {itemLeft} {itemLeft > 1 ? "items" : "item"} left 
                 </Text>
-                <Text onClick={handleClearAllClick} cursor={"pointer"} _hover={{color: colorMode === "light" ? "black" : "white"}}>
-                    Clear Completed
-                </Text>
+                <Tex
             </Flex>
             </Flex>}
     </Box>

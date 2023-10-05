@@ -24,7 +24,7 @@ export const StatusBar = ({colorMode, itemLeft, handleClearAllClick}) => {
             <Text>
                 {itemLeft} {itemLeft > 1 ? "items" : "item"} left 
                 </Text>
-                <Text onClick={handleClearAllClick} cursor={"pointer"} _hover={{color: colorMode === "light" ? "black" : "white"}}>
+                <Text onClick={handleClearAllClick} cursor={"pointer"} _hover={{color: colorMode === "light ? >
                     Clear Completed
                 </Text>
             </Flex>
