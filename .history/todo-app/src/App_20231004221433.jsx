@@ -73,12 +73,14 @@ function App() {
           background={colorMode === "light" ? "white" : "#1a202c"}
         >
           <Box maxH={"50vh"} overflowY={"auto"}>
-            <TodoList
-              todos={todos}
-              colorMode={colorMode}
-              handleCompletedTodo={handleCompletedTodo}
-              handleDeleteTodo={handleDeleteTodo}
-            />
+            <Box>
+              <TodoList
+                todos={todos}
+                colorMode={colorMode}
+                handleCompletedTodo={handleCompletedTodo}
+                handleDeleteTodo={handleDeleteTodo}
+              />
+            </Box>
           </Box>
         </Box>
       </Box>
