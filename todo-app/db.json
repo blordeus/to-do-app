@@ -1,5 +1,31 @@
 {
   "data": {
-    "todos": []
+    "todos": [
+      {
+        "id": "4eee831b-96f1-41f0-9da8-2c658cf5d3c4",
+        "title": "Keep coding",
+        "isCompleted": false
+      },
+      {
+        "id": "5033356a-1927-4a8b-8968-b1d5b35b3e6e",
+        "title": "Be productive",
+        "isCompleted": false
+      },
+      {
+        "id": "e8d40d24-1bed-4629-89a2-e852f3071fc7",
+        "title": "And another one",
+        "isCompleted": false
+      },
+      {
+        "id": "6df5029c-8e8d-4570-860c-16c1473d08e4",
+        "title": "Add new task",
+        "isCompleted": false
+      },
+      {
+        "id": "a7c547d1-1653-4fc0-96fe-c4e3552287c5",
+        "title": "Complete To-Do List",
+        "isCompleted": true
+      }
+    ]
   }
 }

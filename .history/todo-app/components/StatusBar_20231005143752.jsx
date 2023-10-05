@@ -30,7 +30,7 @@ export const StatusBar = ({colorMode, itemLeft, handleClearAllClick, handleAllCl
             </Flex>
             <Box mt="3em" h="3em" minW={"100%"} backgroundColor={colorMode === "light" ? "hsl(0,0%,98%)" : "hsl(235,21%,11%)"}>
                 <Flex gap={"1em"} h={"3em"} justifyContent={"center"} alignItems={"center"} borderRadius={"10px"} backgroundColor={colorMode === "light" ? "white" : "#1a202c"}>
-                <Text onClick={handleAllClick} cursor={"pointer"} _active={{color: "hsl(220, 98%, 61%)"}}  _hover={{color: colorMode === "light" ? "black" : "white"}}>
+                <Text onClick={handleAllClick} cursor={"pointer"} _active={"hsl(220, 98%, 61%)"}  _hover={{color: colorMode === "light" ? "black" : "white"}}>
                     All
                 </Text>
                 <Text onClick={handleActiveClick} cursor={"pointer"} _active={{color: "hsl(220, 98%, 61%)"}} _hover={{color: colorMode === "light" ? "black" : "white"}}>

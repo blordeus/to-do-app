@@ -33,7 +33,7 @@ export const StatusBar = ({colorMode, itemLeft, handleClearAllClick, handleAllCl
                 <Text onClick={handleAllClick} cursor={"pointer"} _active={{color: "hsl(220, 98%, 61%)"}}  _hover={{color: colorMode === "light" ? "black" : "white"}}>
                     All
                 </Text>
-                <Text onClick={handleActiveClick} cursor={"pointer"} _active={{color: "hsl(220, 98%, 61%)"}} _hover={{color: colorMode === "light" ? "black" : "white"}}>
+                <Text onClick={handleActiveClick} cursor={"pointer"} _active={{backgroundColor: "hsl(220, 98%, 61%)"}} _hover={{color: colorMode === "light" ? "black" : "white"}}>
                     Active
                 </Text>
                 <Text onClick={handleCompletedClick} cursor={"pointer"} _active={{color: "hsl(220, 98%, 61%)"}}  _hover={{color: colorMode === "light" ? "black" : "white"}}>
