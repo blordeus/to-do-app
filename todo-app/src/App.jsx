@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
-import { Box, useColorMode } from "@chakra-ui/react";
+import { Box, useColorMode, useBreakpointValue } from "@chakra-ui/react";
 import { v4 } from "uuid";
+
 import lightBackgroundImage from "./images/bg-desktop-light.jpg";
 import darkBackgroundImage from "./images/bg-desktop-dark.jpg";
-import mobileLightImage from "./images/bg-mobile-light.jpg"
-import mobileDarkImage from "./images/bg-mobile-dark.jpg"
+import mobileLightImage from "./images/bg-mobile-light.jpg";
+import mobileDarkImage from "./images/bg-mobile-dark.jpg";
+
 import Header from "../components/Header";
 import { InputButton } from "../components/InputButton";
-import { addTodo, fetchTodos, markToDoCompleted, deleteTodo, countUncompletedTodo, clearAllCompletedTodos, getActiveTodos, getCompletedTodos } from "./actions";
+import {
+  addTodo,
+  fetchTodos,
+  markToDoCompleted,
+  deleteTodo,
+  countUncompletedTodo,
+  clearAllCompletedTodos,
+  getActiveTodos,
+  getCompletedTodos,
+} from "./actions";
 import { TodoList } from "../components/TodoList";
 import { StatusBar } from "../components/StatusBar";
 
@@ -17,17 +28,35 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [itemLeft, setItemLeft] = useState(0);
 
-  const handleAddTodo = async (e) => {
-    if (todo && e.keyCode == 13) {
-      const newTodo = {
-        id: v4(),
-        title: todo,
-        isCompleted: false,
-      };
-      await addTodo(newTodo);
-      setTodos(await fetchTodos());
-      setTodo("");
-    }
+  // Pick background image based on screen size and color mode
+  const isMobile = useBreakpointValue({ base: true, md: false });
+  const bgImage =
+    isMobile
+      ? colorMode === "light"
+        ? mobileLightImage
+        : mobileDarkImage
+      : colorMode === "light"
+      ? lightBackgroundImage
+      : darkBackgroundImage;
+
+  const handleAddTodo = async (input) => {
+    const value = typeof input === "string" ? input : todo;
+    if (!value.trim()) return;
+
+    const newTodo = {
+      id: v4(),
+      title: value.trim(),
+      isCompleted: false,
+    };
+
+    await addTodo(newTodo);
+    setTodos(await fetchTodos());
+    setTodo("");
+  };
+
+  // Keyboard: Enter key
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) handleAddTodo();
   };
 
   const handleCompletedTodo = async (id) => {
@@ -43,77 +72,81 @@ function App() {
   const handleClearAllClick = async () => {
     await clearAllCompletedTodos();
     fetchTodos().then((data) => setTodos(data));
-  }
+  };
 
   const handleAllClick = async () => {
     fetchTodos().then((data) => setTodos(data));
-  }
+  };
 
   const handleActiveClick = async () => {
-    getActiveTodos().then(todos => setTodos(todos));
-  }
+    getActiveTodos().then((todos) => setTodos(todos));
+  };
 
   const handleCompletedClick = async () => {
-    getCompletedTodos().then(todos => setTodos(todos));
-  }
+    getCompletedTodos().then((todos) => setTodos(todos));
+  };
 
   useEffect(() => {
     fetchTodos().then((data) => setTodos(data));
   }, []);
-  
+
   useEffect(() => {
     countUncompletedTodo().then((count) => setItemLeft(count));
   }, [todos]);
 
   return (
-    <>
+    <Box
+      minH="100vh"
+      background={
+        colorMode === "light" ? "hsl(0,0%,98%)" : "hsl(235,21%,11%)"
+      }
+    >
+      {/* Hero / Header area with background image */}
       <Box
-        backgroundImage={
-          colorMode === "light" ? lightBackgroundImage : darkBackgroundImage
-        }
+        backgroundImage={bgImage}
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
-        h={"30vh"}
+        backgroundPosition="center"
+        pb={{ base: "80px", md: "100px" }}
+        pt={{ base: "40px", md: "70px" }}
       >
-        <Box w={{base: "80%", md: "60%", lg: "40%"}} m={"auto"} p="4em 0" >
+        <Box w={{ base: "90%", md: "60%", lg: "40%" }} m="auto">
           <Header colorMode={colorMode} toggleColorMode={toggleColorMode} />
           <InputButton
             colorMode={colorMode}
             todo={todo}
             setTodo={setTodo}
-            addTodo={handleAddTodo}
+            addTodo={handleAddTodo}       // called on button click
+            handleKeyDown={handleKeyDown} // called on Enter key
           />
         </Box>
       </Box>
-      <Box
-        h={"70vh"}
-        backgroundSize={"cover"}
-        background={colorMode === "light" ? "hsl(0,0%,98%)" : "hsl(235,21%,11%)"}
-        position={"relative"}
-      >
+
+      {/* Main content area */}
+      <Box w={{ base: "90%", md: "60%", lg: "40%" }} m="auto" mt="-40px">
         <Box
-          minW={"100%"}
-          m={"auto"}
-          position={"absolute"}
-          top={"-10"}
+          maxH="50vh"
+          overflowY="auto"
+          borderTopRadius="10px"
+          backgroundColor={colorMode === "light" ? "white" : "#1a202c"}
         >
-          <Box w={{base: "80%", md: "60%", lg: "40%"}} m={"auto"}>
-          <Box maxH={"50vh"} overflowY={"auto"} borderTopRadius={"10px"} backgroundColor={colorMode === "light" ? "white" : "#1a202c"}>
-            <TodoList
-              todos={todos}
-              colorMode={colorMode}
-              handleCompletedTodo={handleCompletedTodo}
-              handleDeleteTodo={handleDeleteTodo}
-            />
-          </Box>
-          <StatusBar colorMode={colorMode} itemLeft={itemLeft} handleClearAllClick={handleClearAllClick}  handleAllClick={handleAllClick}
-              handleActiveClick={handleActiveClick}
-              handleCompletedClick={handleCompletedClick}/>
-          </Box>
-     
+          <TodoList
+            todos={todos}
+            colorMode={colorMode}
+            handleCompletedTodo={handleCompletedTodo}
+            handleDeleteTodo={handleDeleteTodo}
+          />
         </Box>
+        <StatusBar
+          colorMode={colorMode}
+          itemLeft={itemLeft}
+          handleClearAllClick={handleClearAllClick}
+          handleAllClick={handleAllClick}
+          handleActiveClick={handleActiveClick}
+          handleCompletedClick={handleCompletedClick}
+        />
       </Box>
-    </>
+    </Box>
   );
 }
 

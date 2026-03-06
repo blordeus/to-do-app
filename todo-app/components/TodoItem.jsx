@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-
+import { useBreakpointValue } from "@chakra-ui/react";
 import checkIcon from "../src/images/icon-check.svg";
 import { Circle } from "./Circle";
 import { CloseIcon } from "@chakra-ui/icons";
@@ -13,7 +13,11 @@ export const TodoItem = ({
   handleDeleteTodo,
 }) => {
   const [isCompleted, setIsCompleted] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // On mobile, always show delete. On desktop, show on hover.
+  const isMobile = useBreakpointValue({ base: true, md: false });
+  const showDelete = isMobile || isHovered;
 
   const handleClick = async (id) => {
     await handleCompletedTodo(id);
@@ -29,8 +33,8 @@ export const TodoItem = ({
       p="1.1em"
       h="4.4em"
       borderBottom="1px solid grey"
-      onMouseEnter={() => setIsVisible(true)}
-      onMouseLeave={() => setIsVisible(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <Flex alignItems={"center"} minW={"100%"}>
         <Box cursor={"pointer"} onClick={() => handleClick(todo.id)}>
@@ -51,7 +55,8 @@ export const TodoItem = ({
             <Circle width={"22px"} height={"22px"} />
           )}
         </Box>
-        <Flex ml={"1em"} justifyContent={"space-between"} w="100%">
+
+        <Flex ml={"1em"} justifyContent={"space-between"} w="100%" alignItems="center">
           <Text
             fontWeight={"700"}
             fontSize={"1.2rem"}
@@ -62,9 +67,17 @@ export const TodoItem = ({
           >
             {todo.title}
           </Text>
-          {isVisible && (
-            <Box cursor="pointer" onClick={() => handleDeleteTodo(todo.id)}>
-              <CloseIcon />
+
+          {showDelete && (
+            <Box
+              cursor="pointer"
+              onClick={() => handleDeleteTodo(todo.id)}
+              ml={2}
+              flexShrink={0}
+              color="grey"
+              _hover={{ color: colorMode === "light" ? "black" : "white" }}
+            >
+              <CloseIcon boxSize={3} />
             </Box>
           )}
         </Flex>

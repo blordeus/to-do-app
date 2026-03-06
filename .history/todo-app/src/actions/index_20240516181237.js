@@ -13,6 +13,7 @@ export const addTodo = async (todo) => {
     const newData = [todo, ...data.todos];
 
     await axios.post("http://localhost:7000/data", {todos: newData});
+    db
 };
 
 export const isTodoCompleted = async (id) => {

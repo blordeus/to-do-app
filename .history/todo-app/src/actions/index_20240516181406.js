@@ -1,11 +1,18 @@
 import axios from 'axios';
 
 
-export const fetchTodos = async () => {
-    const {data} = await axios.get("http://localhost:7000/data");
-
-    return data.todos;
-};
+<<<<<<<<<<<<<<  ✨ Codeium Command 🌟 >>>>>>>>>>>>>>>>
+ export const fetchTodos = async () => {
++    const response = await axios.get(
++        "https://to-do-app-8ec0e-default-rtdb.firebaseio.com/todos.json"
++    );
+-    const {data} = await axios.get("http://localhost:7000/data");
+ 
++    return Object.values(response.data);
++};
+-    return data.todos;
+-};
+<<<<<<<  eab7b0e8-40fb-4939-a7b9-ac5ebcc308f8  >>>>>>>
 
 export const addTodo = async (todo) => {
     const {data} = await axios.get("http://localhost:7000/data");

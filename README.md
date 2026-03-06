@@ -1,0 +1,71 @@
+# Frontend Mentor — Todo App
+
+![Challenge Difficulty](https://img.shields.io/badge/Difficulty-Junior-yellow?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Completed-4F8EF7?style=flat-square)
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Chakra UI](https://img.shields.io/badge/Chakra_UI-319795?style=flat-square&logo=chakra-ui&logoColor=white)
+
+This is my solution to the [Todo App challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokemoNnIwipH).
+
+## 📸 Preview
+
+![App Preview](./preview.jpg)
+
+## ✅ Features
+
+- Add, complete, and delete todos
+- Filter by All, Active, and Completed
+- Clear all completed todos at once
+- Items remaining count
+- Light and dark mode toggle
+- Responsive layout for mobile, tablet, and desktop
+- Mobile-friendly delete (always visible on touch devices)
+
+## 🛠️ Built With
+
+- React 18
+- Chakra UI v2
+- json-server (mock REST API)
+- Vite
+- uuid
+
+## 💡 What I Learned
+
+This was my first full CRUD app in React. Key takeaways:
+
+- Managing async state across multiple actions (add, delete, toggle, filter) without a state management library
+- Using json-server as a lightweight mock backend to simulate real API calls
+- Handling responsive design differences between desktop (hover interactions) and mobile (always-visible controls)
+- Using Chakra UI's `useColorMode` and `useBreakpointValue` for theme and layout switching
+
+## 🚀 Getting Started
+
+Requires two terminals running simultaneously.
+
+**Install dependencies:**
+```bash
+cd todo-app
+yarn install
+```
+
+**Terminal 1 — Start the mock API:**
+```bash
+npx json-server --watch db.json --port 7000 or yarn json-server --watch db.json --port 7000
+```
+
+**Terminal 2 — Start the dev server:**
+```bash
+yarn dev
+```
+
+Then open `http://localhost:5173` in your browser.
+
+## 🔗 Links
+
+- [Live Demo](https://blordeus.github.io/to-do-app/)
+- [Frontend Mentor Challenge](https://www.frontendmentor.io/challenges/todo-app-Su1_KokemoNnIwipH)
+
+## 👤 Author
+
+**Bryan Lordeus**  
+[Portfolio](https://bryanlordeus.com) · [Frontend Mentor](https://www.frontendmentor.io/profile/blordeus) · [GitHub](https://github.com/blordeus)
